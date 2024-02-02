@@ -1,0 +1,86 @@
+﻿@model GameApplication.Models.ViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TC No, Ad, Soyad Formu</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa; /* Arka plan rengi */
+            font-family: 'Arial', sans-serif; /* Yazı tipi */
+        }
+
+        .container {
+            max-width: 400px; /* Formun genişliği */
+            margin-top: 50px; /* Formun üstündeki boşluk */
+        }
+
+        .form-group label {
+            color: #495057; /* Label rengi */
+        }
+
+        .form-control {
+            border: 1px solid #ced4da; /* Input kenarlık rengi */
+        }
+
+            .form-control:focus {
+                border-color: #007bff; /* Aktif input kenarlık rengi */
+                box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Aktif input gölge rengi */
+            }
+
+        .btn-primary {
+            background-color: #007bff; /* Buton arka plan rengi */
+            border-color: #007bff; /* Buton kenarlık rengi */
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3; /* Buton üzerine gelindiğinde arka plan rengi */
+                border-color: #0056b3; /* Buton üzerine gelindiğinde kenarlık rengi */
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form method="post" asp-controller="Home" asp-action="Index">
+            <div class="form-group">
+                <label for="tcNo">TC No:</label>
+                
+                @Html.TextBoxFor(Model=>Model._parameters.TCKimlikNo,new{@class="form-control",@type="number",@id="TCKlimlikNo"})
+            </div>
+
+            <div class="form-group">
+                <label for="ad">Ad:</label>
+                @Html.TextBoxFor(Model=>Model._parameters.Ad,new{@class="form-control",@type="text",@id="Ad"})
+
+            </div>
+
+            <div class="form-group">
+                <label for="soyad">Soyad:</label>
+                @Html.TextBoxFor(Model=>Model._parameters.Soyad,new{@class="form-control",@type="text" ,@id="Soyad"})
+
+            </div>
+            <div class="form-group">
+                <label for="dogumyili">DoğumYılı:</label>
+                @Html.TextBoxFor(Model=>Model._parameters.DogumYili,new{@class="form-control",@type="text",@id="DogumYili"})
+
+            </div>
+
+           
+
+            <button type="submit" class="btn btn-primary" asp-controller="Home" asp-action="Index">Kontrol</button>
+        </form>
+    </div>
+
+   
+
+</body>
+</html>
